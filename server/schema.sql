@@ -2,24 +2,33 @@ CREATE DATABASE IF NOT EXISTS chat;
 
 USE chat;
 
+CREATE TABLE users (
+  id INTEGER AUTO_INCREMENT, 
+  PRIMARY KEY(id),
+  name TEXT
+);
+CREATE TABLE rooms (
+  id INTEGER AUTO_INCREMENT,
+  PRIMARY KEY(id),
+  name TEXT
+);
 CREATE TABLE messages (
-  id INTEGER PRIMARY KEY,
+  id INTEGER AUTO_INCREMENT,
+  PRIMARY KEY(id),
   message TEXT,
-  user TEXT,
-  room TEXT
+  users_id INTEGER,
+  FOREIGN KEY (users_id) 
+  REFERENCES users(id)
+  ON DELETE CASCADE,
+  rooms_id INTEGER,
+  FOREIGN KEY (rooms_id) 
+  REFERENCES rooms(id)
+  ON DELETE CASCADE
 );
 
 /* Create other tables and define schemas for them here! */
 
-CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  name TEXT
-);
 
-CREATE TABLE rooms (
-  id INTEGER PRIMARY KEY,
-  name TEXT
-);
 
 
 /*  Execute this file from the command line by typing:

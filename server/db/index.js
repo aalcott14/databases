@@ -10,7 +10,8 @@ var connection = mysql.createConnection({
   database: 'chat'
 });
 
-connection.connect(function(err) {
+connection.connect(function(err, data) {
+  console.log('-----------> ', data);
   if (err) {
     throw err;
   }
