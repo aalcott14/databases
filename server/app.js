@@ -1,5 +1,6 @@
 var express = require('express');
 var db = require('./db');
+var connection = require('./db/index.js');
 
 // Middleware
 var morgan = require('morgan');
@@ -20,7 +21,7 @@ app.use(parser.json());
 
 // Set up our routes
 app.use('/classes', router);
-
+console.log('--------------', router);
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
 
